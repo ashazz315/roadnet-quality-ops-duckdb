@@ -3,6 +3,7 @@
 import json
 from collections import Counter
 from copy import deepcopy
+from datetime import timedelta
 from pathlib import Path
 
 import pandas as pd
@@ -126,7 +127,7 @@ def point_rows(network, *, trips=4, reverse=True):
                     "point_seq": seq,
                     "timestamp": (
                         pd.Timestamp("2026-06-01T00:00:00Z")
-                        + pd.Timedelta(hours=trip * 6, seconds=seq * 2)
+                        + timedelta(hours=trip * 6, seconds=seq * 2)
                     ).isoformat(),
                     "longitude": lon,
                     "latitude": lat,
@@ -167,13 +168,13 @@ def reports(network, kind="turn_not_allowed"):
 
 
 def reference(index, **fields):
-    timestamp = pd.Timestamp("2026-06-01T00:00:00Z") + pd.Timedelta(hours=index * 6)
+    timestamp = pd.Timestamp("2026-06-01T00:00:00Z") + timedelta(hours=index * 6)
     return {
         "trajectory_id": f"T{index}",
         "start_seq": 0,
         "end_seq": 2,
         "start_time": timestamp,
-        "end_time": timestamp + pd.Timedelta(seconds=4),
+        "end_time": timestamp + timedelta(seconds=4),
         "quality": 0.95,
         **fields,
     }
@@ -310,7 +311,7 @@ def test_missing_road_needs_continuous_repeated_corridor_not_single_gps_jumps(ne
                     "trajectory_id": f"T{trip}",
                     "point_seq": seq,
                     "timestamp": pd.Timestamp("2026-06-01T00:00:00Z")
-                    + pd.Timedelta(hours=trip * 6, seconds=seq * 2),
+                    + timedelta(hours=trip * 6, seconds=seq * 2),
                     "x": x + seq * 10,
                     "y": y + 200 + trip,
                     "heading_deg": 90.0,
