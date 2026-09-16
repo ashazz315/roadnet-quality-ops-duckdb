@@ -1,0 +1,6 @@
+{
+  "CONNECTIVITY_BREAK": {"navigation": "HIGH", "routing": "HIGH", "eta": "MEDIUM", "dispatch": "MEDIUM", "poi_local_service": "MEDIUM"},
+  "TURN_RESTRICTION_CONFLICT": {"navigation": "HIGH", "routing": "HIGH", "eta": "MEDIUM", "dispatch": "MEDIUM", "poi_local_service": "LOW"},
+  "ONEWAY_DIRECTION_CONFLICT": {"navigation": "HIGH", "routing": "HIGH", "eta": "MEDIUM", "dispatch": "MEDIUM", "poi_local_service": "LOW"},
+  "MISSING_OR_CHANGED_ROAD_CANDIDATE": {"navigation": "HIGH", "routing": "HIGH", "eta": "MEDIUM", "dispatch": "MEDIUM", "poi_local_service": "MEDIUM"}
+}

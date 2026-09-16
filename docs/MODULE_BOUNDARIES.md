@@ -129,4 +129,12 @@ CI 保留原有检查，只增加 `roadinsight-v2` 的 push 触发。没有新�
 
 检测只应接收生成目录的 `inputs/manifest.json`；原始身份、故障答案、路径和噪声真值分开存放在 `truth/`。当前测试覆盖字段隔离与文件适配器读取，尚无 STEP 6 检测流程，不能声称完成检测端到端防泄漏。输入与限制详见 `BENCHMARK_DATA.md`。
 
-后续 STEP 6 需要单独批准。
+## 9. STEP 6 增量边界
+
+STEP 6 的当前网络匹配位于 `network/observation_matching.py`，四类检测只依赖 domain/network 和可观测参数。`evidence/fusion.py` 汇总去重证据，`scoring/confidence.py` 产生未校准评分，`business/impact.py` 输出待重放验证的潜在影响。组合与清洗由包外 `analysis_pipeline.py`、`analysis_inputs.py` 完成，结果数据库写入由 data_sources 负责。
+
+分析入口不导入 Benchmark/Golden 生成器，也不使用旧六类标签模拟器；已有 `road_matching.py` 的旧文件接口继续保留，V2 新匹配使用当前输入路网和同样的米制距离原则，并加入方向中立的航向与歧义检查。它不提供 STEP 7 路由。
+
+测试覆盖独立 inputs 目录运行、额外答案列拒绝、来源/版本约束、可复现结果与原功能回归。字段、规则、评分公式和已知限制参见 `ISSUE_ANALYSIS.md`。
+
+后续 STEP 7 需要单独批准。

@@ -1,0 +1,76 @@
+{
+  "algorithm_version": "observable-road-diagnosis-v1",
+  "analysis_id": "analysis-b82b9e6df948a8be1ed9",
+  "benchmark_accuracy_evaluated": false,
+  "code_sha256": "bb4650b67ae78a3658ad763edd8597d8276e8bd46b0c8764e944e698fc93a65c",
+  "example_analysis_seconds": 7.162248,
+  "input_content_sha256": {
+    "road_node": "423da3cf4e0bc3a13a00bc34bfe9ae763fbcad9719af46668b9865613b55292d",
+    "road_segment": "a6b6c5c78ac4df184c7a82a384219acd4fd3db426b5a62ac0efb7c3749aec70e",
+    "trajectory_point": "6b290c398811d910aa212a84caacca52b25c92810d5de66effad9d28e246e70e",
+    "turn_restriction": "1985645b81ef3b851593618a42c6cac40796e44f034f6080d4a546e7d82d1633",
+    "user_feedback": "fc2296b99a837b9c121c1e63414d3cd5f5ee19a87c58b922b9b4894b4ba90388"
+  },
+  "network_version": "benchmark-4ff26f0d4218ee83bcfe",
+  "reproducibility_excluded_columns": [
+    "run_id",
+    "first_detected_at",
+    "last_detected_at"
+  ],
+  "result_content_sha256_excluding_run_fields": {
+    "accepted_user_feedback": "dacf9ff9bc8698e29984fc6c0e1af59a75cb1371588b4a648c0917203e24d2bc",
+    "business_impact": "81c155fc1188865fd929c5e011620fb20ebfcb7ece1f7931b02635c1e39d54d3",
+    "issue_evidence": "82f8286ee49ac3da8c07e83faf2ecda0ec5707031a49f91fc42964c39541bce5",
+    "matched_trajectory_point": "a449533b5099173db35b8c1bdc268ea9e344f09bc0456e0e2aa91b219471f449",
+    "rejected_trajectory_point": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "rejected_user_feedback": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "road_issue": "76ce13b5406cd524a77e8d4b1126e9d1e0fc80f983c62f1183c3d05e1de815e6",
+    "trajectory_passage": "7009534300ebf319f338e07a7ad625628bbb8db5e17e7d7f9bb6dc71d1fb539c"
+  },
+  "rules_version": "5d332e9c289fc4a74e4205a2fbfb333b8f6bfb6153138ceb957dd833c2c1d6ab",
+  "summary": {
+    "accepted_feedback": 36,
+    "accepted_trajectory_points": 60004,
+    "business_impact_measured": false,
+    "business_impact_rows": 90,
+    "confidence_calibrated": false,
+    "evidence_rows": 90,
+    "input_feedback": 36,
+    "input_trajectory_points": 60004,
+    "is_synthetic": true,
+    "issue_count": 18,
+    "issues_per_type": {
+      "CONNECTIVITY_BREAK": 5,
+      "MISSING_OR_CHANGED_ROAD_CANDIDATE": 4,
+      "ONEWAY_DIRECTION_CONFLICT": 6,
+      "TURN_RESTRICTION_CONFLICT": 3
+    },
+    "matching_status_counts": {
+      "ambiguous": 5992,
+      "matched": 52531,
+      "needs_review": 563,
+      "unmatched": 918
+    },
+    "matching_success_rate": 0.8754583027798147,
+    "mean_matched_distance_m": 1.9139073337603567,
+    "p95_matched_distance_m": 4.721762102022918,
+    "quality_excluded_points": 0,
+    "rejected_feedback": 0,
+    "rejected_trajectory_points": 0,
+    "trajectory_count": 746
+  },
+  "tested_environment": {
+    "duckdb": "1.5.5",
+    "geos": "3.13.1",
+    "machine": "AMD64",
+    "networkx": "3.6.1",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "proj": "9.8.1",
+    "pyarrow": "25.0.1",
+    "pyproj": "3.8.0",
+    "python": "3.12.14",
+    "shapely": "2.1.2",
+    "system": "Windows"
+  }
+}
