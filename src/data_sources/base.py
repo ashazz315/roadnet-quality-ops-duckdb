@@ -25,6 +25,14 @@ class SourceMetadata:
     network_version: str
     is_synthetic: bool
 
+    def __post_init__(self) -> None:
+        for field in ("source_ref", "data_version", "network_version"):
+            value = getattr(self, field)
+            if not isinstance(value, str) or not value.strip():
+                raise ValueError(f"{field} must be a nonempty string")
+        if type(self.is_synthetic) is not bool:
+            raise ValueError("is_synthetic must be explicitly true or false")
+
 
 class DataSourceError(ValueError):
     """Requested input is absent, unsupported, or cannot be read."""

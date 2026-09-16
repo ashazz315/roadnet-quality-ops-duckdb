@@ -1,0 +1,12 @@
+{
+  "area_id": "xuhui_xujiahui_stadium",
+  "description": "徐家汇—上海体育场周边约 3×3 km 矩形窗口；不是行政区边界裁剪",
+  "bbox": [121.4205, 31.1685, 121.452, 31.1955],
+  "query_buffer_degrees": 0.002,
+  "metric_crs": "EPSG:32651",
+  "profile": "motorcar_static",
+  "highway_classes": ["motorway", "motorway_link", "trunk", "trunk_link", "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link", "unclassified", "residential", "living_street", "service"],
+  "overpass_endpoint": "https://overpass-api.de/api/interpreter",
+  "timeout_seconds": 90,
+  "query_version": "osm-roads-restrictions-v1"
+}

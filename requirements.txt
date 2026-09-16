@@ -7,3 +7,5 @@ geopandas>=1.0,<2
 shapely>=2.0,<3
 pyproj>=3.6,<4
 pyyaml>=6.0,<7
+networkx>=3.2,<4
+pyarrow>=14,<26
