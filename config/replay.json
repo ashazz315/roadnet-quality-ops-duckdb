@@ -1,0 +1,13 @@
+{
+  "objective": "distance",
+  "allow_immediate_uturn": false,
+  "default_speed_kmh": 25,
+  "speed_by_road_class": {"motorway": 70, "motorway_link": 40, "trunk": 50, "trunk_link": 35, "primary": 40, "primary_link": 30, "secondary": 35, "secondary_link": 25, "tertiary": 30, "tertiary_link": 25, "residential": 25, "unclassified": 25, "living_street": 15, "service": 15},
+  "turn_angle_threshold_deg": 30,
+  "uturn_angle_threshold_deg": 150,
+  "turn_delay_seconds": 5,
+  "uturn_delay_seconds": 10,
+  "metric_crs": "EPSG:32651",
+  "max_snap_distance_m": 15,
+  "max_od_pairs_per_issue": 2
+}

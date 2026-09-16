@@ -138,3 +138,11 @@ STEP 6 的当前网络匹配位于 `network/observation_matching.py`，四类检
 测试覆盖独立 inputs 目录运行、额外答案列拒绝、来源/版本约束、可复现结果与原功能回归。字段、规则、评分公式和已知限制参见 `ISSUE_ANALYSIS.md`。
 
 后续 STEP 7 需要单独批准。
+
+## 10. STEP 7 增量边界
+
+STEP 7 已实现：`network/routing.py` 执行受单行与静态转向限制的路由；`replay/patches.py` 根据当前 Issue 生成独立假设副本；`replay/route_replay.py` 比较相同 OD 下的可达性、合法性、距离和模型 ETA。replay 只依赖自身、domain 和 network，不读取 Golden、注入答案或存储。
+
+包外 `replay_pipeline.py` 校验输入与分析结果指纹、组合计算并导出，`replay_visualization.py` 生成离线 SVG；DuckDB 写入归 `data_sources/replay_results.py`。受转向限制的查询必须经过新路由器，原 graph_builder 普通图的最短路仍不执行禁转。
+
+修复只用于派生网络快照；所有输出显式标记未实地核验，原 Issue 状态和评分保持不变。缺路候选缺乏明确端点、方向和通行权时保留人工审核。运行方式、默认样例、边界与结果字段见 [Route Replay](ROUTE_REPLAY.md)。下一步 STEP 8 页面改造仍需单独批准。
