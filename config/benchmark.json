@@ -1,0 +1,21 @@
+{
+  "seed": 42,
+  "faults_per_type": 6,
+  "target_point_count": 60000,
+  "target_paths_per_fault": 8,
+  "feedback_count": 36,
+  "supporting_feedback_count": 24,
+  "feedback_fault_coverage": 0.75,
+  "sample_interval_seconds": 2,
+  "speed_kmh_range": [18, 36],
+  "gps_sigma_m": 2.5,
+  "gps_max_m": 8,
+  "gps_outlier_fraction": 0.005,
+  "gps_outlier_range_m": [20, 35],
+  "connectivity_gap_m": 6,
+  "minimum_target_length_m": 50,
+  "path_edges_range": [8, 18],
+  "start_time": "2026-06-01T00:00:00+00:00",
+  "duration_hours": 48,
+  "metric_crs": "EPSG:32651"
+}

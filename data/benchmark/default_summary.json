@@ -1,0 +1,83 @@
+{
+  "artifacts": {
+    "inputs/manifest.json": "a05e671518c803c4c4380d29abc854163ab8067125d39ecac87ae2e9cab9febe",
+    "inputs/road_node.parquet": "bf0e74462c27254102fcd26b81df66f698b53598f9e80364b7f885be7801c9df",
+    "inputs/road_segment.parquet": "c751599e02ebe143b9c17933b509f7eab7f7eefe26120c6b13aa47bdb898284d",
+    "inputs/trajectory_point.parquet": "c1eee215b6090ba46ced67571066630889fb0b12486c0fb5ad8850a765b5ed09",
+    "inputs/turn_restriction.parquet": "9f96dc955c627e21625e7a0b5ab7a0eb39221235c1942eca3e6b635f96b42d82",
+    "inputs/user_feedback.parquet": "2a58359385ebef0f937a84af8b81bb8902d83a7b12e7cbf02912d453e2659f7a",
+    "truth/faults.json": "7303ccf813f8ac0c38fc6da5292a5af84fda5975499261fee13601b1de0c2c70",
+    "truth/feedback_truth.parquet": "5a7504ecfd1afdb466741f17c3e501bad5373a39077315948aad8a871b9fdcad",
+    "truth/id_mapping.json": "cc24d115fbaa2bc3030eb6f8f7a5c9f61b9431ccadd6bb88739bef0831783daf",
+    "truth/point_truth.parquet": "79e53bbac63b8d4b41c2f82b05f3971a6c6d08b67cbf0f47d7ff1c08120901e0",
+    "truth/trajectory_paths.parquet": "88a1f4a2087810c0e5f1e447855a6595acab50973c0baf1f26320e19358670aa"
+  },
+  "attribution": "© OpenStreetMap contributors; RoadInsight synthetic modifications and observations",
+  "code_sha256": "495b955d65da51d684fb8a886313406ee1bd524811e5249b8e36d0c0c8f49ee7",
+  "golden_network_version": "xuhui-7b850a74aedddd6e0da1",
+  "license": "ODbL-1.0",
+  "network_version": "benchmark-8ac4eb0e1396885460ba",
+  "parameters": {
+    "connectivity_gap_m": 6,
+    "duration_hours": 48,
+    "faults_per_type": 6,
+    "feedback_count": 36,
+    "feedback_fault_coverage": 0.75,
+    "gps_max_m": 8,
+    "gps_outlier_fraction": 0.005,
+    "gps_outlier_range_m": [
+      20,
+      35
+    ],
+    "gps_sigma_m": 2.5,
+    "metric_crs": "EPSG:32651",
+    "minimum_target_length_m": 50,
+    "path_edges_range": [
+      8,
+      18
+    ],
+    "sample_interval_seconds": 2,
+    "seed": 42,
+    "speed_kmh_range": [
+      18,
+      36
+    ],
+    "start_time": "2026-06-01T00:00:00+00:00",
+    "supporting_feedback_count": 24,
+    "target_paths_per_fault": 8,
+    "target_point_count": 60000
+  },
+  "summary": {
+    "distractor_feedback": 12,
+    "faults": 24,
+    "faults_per_type": {
+      "CONNECTIVITY_BREAK": 6,
+      "MISSING_OR_CHANGED_ROAD_CANDIDATE": 6,
+      "ONEWAY_DIRECTION_CONFLICT": 6,
+      "TURN_RESTRICTION_CONFLICT": 6
+    },
+    "faults_with_feedback": 18,
+    "gps_outliers": 311,
+    "input_rows": {
+      "road_node": 842,
+      "road_segment": 1071,
+      "trajectory_point": 60004,
+      "turn_restriction": 14,
+      "user_feedback": 36
+    },
+    "is_real_world_validation": false,
+    "is_synthetic": true,
+    "supporting_feedback": 24,
+    "targeted_paths": 192,
+    "trajectories": 746
+  },
+  "tested_environment": {
+    "geopandas": "1.1.4",
+    "networkx": "3.6.1",
+    "pandas": "2.3.3",
+    "pyarrow": "25.0.1",
+    "pyproj": "3.8.0",
+    "python": "3.12.14",
+    "shapely": "2.1.2"
+  }
+}

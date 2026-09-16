@@ -121,4 +121,12 @@ python -m compileall app.py src quality_mvp tests
 
 CI 保留原有检查，只增加 `roadinsight-v2` 的 push 触发。没有新增运行依赖、修改旧上传逻辑、下载 OSM、建立 V2 表、生成 Benchmark 或开发新 UI。
 
-下一步为 STEP 4：OSM Golden Network 与数据管线；须先确认数据区域、文件计划、验收标准并取得明确批准。
+上述为 STEP 3 完成时的范围。STEP 4 数据管线已实现，参见 `OSM_PIPELINE.md`。
+
+## 8. STEP 5 增量边界
+
+`src/benchmark/` 实现纯故障注入、Golden 受约束路径模拟和输入字段投影；只用于生成与评估。`src/benchmark_pipeline.py` 是包外组合入口，负责通过 DataSource 读取 Golden 并写出快照，保持 benchmark 不直接依赖数据适配器。
+
+检测只应接收生成目录的 `inputs/manifest.json`；原始身份、故障答案、路径和噪声真值分开存放在 `truth/`。当前测试覆盖字段隔离与文件适配器读取，尚无 STEP 6 检测流程，不能声称完成检测端到端防泄漏。输入与限制详见 `BENCHMARK_DATA.md`。
+
+后续 STEP 6 需要单独批准。
