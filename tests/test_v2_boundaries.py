@@ -20,6 +20,7 @@ ALLOWED = {
     "scoring": {"domain", "evidence"},
     "business": {"domain"},
     "replay": {"domain", "network"},
+    "evaluation": {"domain"},
     "benchmark": {"domain", "network", "detectors", "evidence", "scoring", "business", "replay", "simulation"},
 }
 UI_MODULES = {"app", "streamlit", "folium", "pydeck", "quality_mvp"}
@@ -64,6 +65,8 @@ def test_v2_layer_imports_follow_dependency_boundaries(layer: str) -> None:
 
 @pytest.mark.parametrize("statement", [
     "import src.benchmark",
+    "import src.evaluation",
+    "from src.evaluation import metrics",
     "from src import benchmark",
     "from src.benchmark import metrics",
     "from .. import benchmark",

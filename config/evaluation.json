@@ -1,0 +1,8 @@
+{
+  "metric_crs": "EPSG:32651",
+  "missing_buffer_m": 20,
+  "minimum_fault_coverage": 0.5,
+  "minimum_candidate_coverage": 0.8,
+  "matching_warning_threshold": 0.7,
+  "low_confidence_threshold": 0.7
+}

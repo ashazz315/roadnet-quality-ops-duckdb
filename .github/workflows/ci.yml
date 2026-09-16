@@ -21,3 +21,13 @@ jobs:
         with:
           node-version: "22"
       - run: node --test tests/ui_model.test.cjs
+      - run: python scripts/09_validate.py --output data/runtime/ci_validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-report
+          path: |
+            data/runtime/ci_validation/suite.json
+            data/runtime/ci_validation/failure.json
+            data/runtime/ci_validation/*.log
+            data/runtime/ci_validation/run*/evaluation.json

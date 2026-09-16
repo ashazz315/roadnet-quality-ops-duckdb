@@ -153,3 +153,8 @@ STEP 7 已实现：`network/routing.py` 执行受单行与静态转向限制的�
 `roadinsight_app.py` 为 V2 Streamlit 入口，旧 `app.py` 和六个旧模块保持原样。`roadinsight_ui/snapshot.py` 将已校验的可观测输入、分析和回放转成只读展示快照；不读取 Golden、注入答案或重跑检测。浏览器组件只做地图展示、筛选和跨页选择，`model.js` 集中定义展示口径。
 
 `roadinsight_ui/actions.py` 将人工核验追加到独立运行记录；上传仍调用原 ingest / validation / road_matching / storage / daily_report。核验与上传都不改变 V2 路网、候选或假设修复。组件不新增认证、部署或生产运营服务。运行与验收见 [UI Guide](UI_GUIDE.md)。STEP 9 评估尚未执行，必须继续获得用户明确批准。
+
+
+## 12. STEP 9 增量边界
+
+`src/evaluation` 只定义评估匹配和只读报告，禁止检测、证据、评分及回放模块反向依赖。`evaluation_pipeline.py` 在检测完成后校验输入、分析、回放及独立答案，输出逐对象评估；不修改原算法或候选。`scripts/09_validate.py` 组合现有脚本，分别在新进程运行两次完整流程，比较产物与指标并记录耗时。UI 只读取绑定当前快照的独立报告。配置与限制见 [Benchmark Evaluation](BENCHMARK_EVALUATION.md)。后续 STEP 10 仍需用户明确批准。

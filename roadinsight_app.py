@@ -13,6 +13,7 @@ from roadinsight_ui.actions import (
     validate_upload,
 )
 from roadinsight_ui.snapshot import DEFAULT_SNAPSHOT, load_snapshot
+from src.evaluation.report import bind_report, read_report
 
 ROOT = Path(__file__).resolve().parent
 st.set_page_config(
@@ -57,11 +58,26 @@ review_dir = Path(
 database_path = Path(
     os.environ.get("ROADINSIGHT_UPLOAD_DB", str(ROOT / "data/road_quality.duckdb"))
 )
+validation_path = Path(
+    os.environ.get(
+        "ROADINSIGHT_VALIDATION_REPORT",
+        str(ROOT / "data/validation/default_report.json"),
+    )
+)
+validation = None
+validation_notice = None
+if validation_path.exists():
+    try:
+        validation = bind_report(read_report(validation_path), snapshot)
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        validation_notice = f"评估报告不可用于当前快照：{exc}"
 workspace = components.declare_component(
     "workspace", path=str(ROOT / "roadinsight_ui/frontend")
 )
 value = workspace(
     snapshot=snapshot,
+    validation=validation,
+    validation_notice=validation_notice,
     reviews=read_reviews(snapshot, review_dir),
     response=st.session_state.get("ui_response"),
     initial_page=st.query_params.get("page", "dashboard"),

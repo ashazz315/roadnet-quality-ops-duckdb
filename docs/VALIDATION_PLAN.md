@@ -146,3 +146,8 @@ Duration
 - 至少一个 Route Replay Case 可视化；
 - 失败数据不会被静默删除；
 - 数据质量过低时页面给出明确告警。
+
+
+## 11. STEP 9 实施结果
+
+已实现独立的一对一类型／对象匹配、分类型和总体 Precision / Recall / F1、逐对象 TP / FP / FN、数据质量告警、两次完整重复运行、阶段耗时与 UI 展示。FP 的准确含义是相对注入故障的未匹配候选；无完整负例全集，因此 TN / FPR 未定义。完整口径、结果、测试和一键入口见 [BENCHMARK_EVALUATION.md](BENCHMARK_EVALUATION.md)。当前样本每类 6 个故障，总体 18 TP / 0 FP / 6 FN，不声称为现实正确率。

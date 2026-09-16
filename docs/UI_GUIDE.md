@@ -1,4 +1,4 @@
-# RoadInsight V2 页面使用说明（STEP 8）
+# RoadInsight V2 页面使用说明（STEP 8–9）
 
 ## 启动
 
@@ -17,7 +17,7 @@ Windows 可使用 `run_roadinsight.bat`。原应用仍用 `python -m streamlit r
 | Dashboard | 城市横幅、五项指标、地图、问题分布、潜在业务影响、最近问题、分析流程 |
 | Map Diagnosis | 筛选／图层、地图／问题表、选中问题／证据／建议三栏联动 |
 | Issue Detail | 局部地图、真实证据时间线、多源证据、假设回放；右栏问题概览、潜在影响、根因假设、人工核验 |
-| Validation | 数据质量、运行来源、真实运行记录；独立准确率评估显示未计算 |
+| Validation | 数据质量、运行来源、真实运行记录；独立合成 Benchmark 指标、逐对象明细及重复性／耗时记录 |
 | Data Management | 快照来源与下载、CSV/XLSX 校验、保存上传批次、Excel 日报、人工核验记录 |
 
 页面按用户 PRD 和四张参考图实施，采用固定顶栏、蓝白卡片、左侧导航及上海城市装饰。地图显示当前约 3×3 km 样本，不绘制未经提供的全徐汇行政边界。1680×945 和 1440×900 为桌面验收尺寸；长证据与回放可纵向滚动。小屏会重排，不等同于桌面截图。
@@ -40,7 +40,7 @@ Windows 可使用 `run_roadinsight.bat`。原应用仍用 `python -m streamlit r
 - 轨迹和反馈为受控合成观测；底层路网源自 OSM，当前网络包含已注入的受控故障。不是企业线上运营数据。
 - Confidence 是未校准证据评分。匹配成功率约 87.55% 是规则接受率；平均匹配距离约 1.91 m 不是已知真实定位误差。
 - 业务条展示规则映射的潜在影响等级或问题数量，没有实测收益百分比。
-- 修复为独立假设副本，未实地核验，不更新原网络。Precision、Recall、F1、FPR、混淆矩阵待 STEP 9，不用候选数量代替正确检测数量。
+- 修复为独立假设副本，未实地核验，不更新原网络。STEP 9 已计算当前合成 Benchmark 的 Precision、Recall、F1；TN 和 FPR 因负例全集未定义而留空，不用候选数量代替正确检测数量。
 - OSM 在线栅格底图仅用于位置参照，其更新时间可能晚于分析快照。诊断以本地当前路网和观测为依据；选择“离线路网”可去除底图。底图请求失败时仍能显示本地道路、问题和轨迹。
 
 ## 数据与操作存放位置
@@ -48,6 +48,7 @@ Windows 可使用 `run_roadinsight.bat`。原应用仍用 `python -m streamlit r
 | 配置 | 默认值 | 用途 |
 | --- | --- | --- |
 | `ROADINSIGHT_UI_SNAPSHOT` | `data/demo/roadinsight-v2.json.gz` | 已生成的页面数据；旁边必须有 `.json.manifest.json` |
+| `ROADINSIGHT_VALIDATION_REPORT` | `data/validation/default_report.json` | 与页面快照严格绑定的独立评估报告 |
 | `ROADINSIGHT_REVIEW_DIR` | `data/runtime/ui_reviews` | 按分析 run ID 隔离的追加式人工记录 |
 | `ROADINSIGHT_UPLOAD_DB` | `data/road_quality.duckdb` | 旧版上传批次数据库 |
 
@@ -85,3 +86,8 @@ Streamlit 提供会话与 Python 操作，`roadinsight_ui/frontend` 为本地 V1
 `assets/shanghai-skyline.png` 是本任务用 OpenAI 图像生成工具于 2026-09-16 生成的装饰画，不是地理数据或上海现状照片；标志与线性图标为项目内 SVG。用户 PRD 和参考图仅作为本地设计依据，未随代码发布。
 
 相关接口依据：[Streamlit V1 自定义组件](https://docs.streamlit.io/develop/concepts/custom-components/components-v1/intro)、[Leaflet 发行与许可](https://leafletjs.com/download.html)。
+
+
+## STEP 9 评估结果
+
+当前 Precision 1.000、Recall 0.750、F1 0.857，24 个故障命中 18 个、漏检 6 个。完整规则、漏检对象、一键重复运行和性能口径见 [Benchmark Evaluation](BENCHMARK_EVALUATION.md)。页面数据快照保留 STEP 8 原始内容；独立评估报告通过校验后再显示。新快照若没有对应报告，准确率仍显示未计算。
