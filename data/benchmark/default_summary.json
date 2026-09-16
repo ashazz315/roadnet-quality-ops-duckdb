@@ -1,22 +1,22 @@
 {
   "artifacts": {
-    "inputs/manifest.json": "a05e671518c803c4c4380d29abc854163ab8067125d39ecac87ae2e9cab9febe",
-    "inputs/road_node.parquet": "bf0e74462c27254102fcd26b81df66f698b53598f9e80364b7f885be7801c9df",
-    "inputs/road_segment.parquet": "c751599e02ebe143b9c17933b509f7eab7f7eefe26120c6b13aa47bdb898284d",
-    "inputs/trajectory_point.parquet": "c1eee215b6090ba46ced67571066630889fb0b12486c0fb5ad8850a765b5ed09",
-    "inputs/turn_restriction.parquet": "9f96dc955c627e21625e7a0b5ab7a0eb39221235c1942eca3e6b635f96b42d82",
-    "inputs/user_feedback.parquet": "2a58359385ebef0f937a84af8b81bb8902d83a7b12e7cbf02912d453e2659f7a",
-    "truth/faults.json": "7303ccf813f8ac0c38fc6da5292a5af84fda5975499261fee13601b1de0c2c70",
+    "inputs/manifest.json": "b6e1868249d712c9922616a18c1b0ca6c8a97aa7767e237011035e30fe010b5a",
+    "inputs/road_node.parquet": "2c2e4d69a8aaba565427fda997bb57c4c4312d883bc034714b3d5821d5f57f8e",
+    "inputs/road_segment.parquet": "eb246374e1240fc98b98fd883e5183320ae31c0b3c2cb5073f2500db08f5a3de",
+    "inputs/trajectory_point.parquet": "638cbe9bd762f189fa8fa9d50e77f111443f210c4211c3fe244acd68a21e55f9",
+    "inputs/turn_restriction.parquet": "f665d2b68e01e9176313ab95718a6540fdec1059b1e9a206fd9037257da98014",
+    "inputs/user_feedback.parquet": "2130e20a75b95382e9db15d60c48e526f2242edfaf5720f05491cbcb7c5d6774",
+    "truth/faults.json": "8f61e86c8fe6d8df7907c76f6341e1eee6db43edb1ffdd42757d2266046e66f6",
     "truth/feedback_truth.parquet": "5a7504ecfd1afdb466741f17c3e501bad5373a39077315948aad8a871b9fdcad",
-    "truth/id_mapping.json": "cc24d115fbaa2bc3030eb6f8f7a5c9f61b9431ccadd6bb88739bef0831783daf",
+    "truth/id_mapping.json": "724d50a7e907b76e729eb189a1268e05d331a02e46576ad078e4fec5e735f4b9",
     "truth/point_truth.parquet": "79e53bbac63b8d4b41c2f82b05f3971a6c6d08b67cbf0f47d7ff1c08120901e0",
     "truth/trajectory_paths.parquet": "88a1f4a2087810c0e5f1e447855a6595acab50973c0baf1f26320e19358670aa"
   },
   "attribution": "© OpenStreetMap contributors; RoadInsight synthetic modifications and observations",
-  "code_sha256": "495b955d65da51d684fb8a886313406ee1bd524811e5249b8e36d0c0c8f49ee7",
+  "code_sha256": "8e06af0a2b1e3940dab10a46c934f5ac22476a252bd420ed58e4b2e08ccb9dae",
   "golden_network_version": "xuhui-7b850a74aedddd6e0da1",
   "license": "ODbL-1.0",
-  "network_version": "benchmark-8ac4eb0e1396885460ba",
+  "network_version": "benchmark-4ff26f0d4218ee83bcfe",
   "parameters": {
     "connectivity_gap_m": 6,
     "duration_hours": 48,
@@ -73,11 +73,16 @@
   },
   "tested_environment": {
     "geopandas": "1.1.4",
+    "geos": "3.13.1",
+    "machine": "AMD64",
     "networkx": "3.6.1",
+    "numpy": "2.3.5",
     "pandas": "2.3.3",
+    "proj": "9.8.1",
     "pyarrow": "25.0.1",
     "pyproj": "3.8.0",
     "python": "3.12.14",
-    "shapely": "2.1.2"
+    "shapely": "2.1.2",
+    "system": "Windows"
   }
 }

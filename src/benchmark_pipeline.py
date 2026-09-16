@@ -15,7 +15,8 @@ from importlib.metadata import version as package_version
 from pathlib import Path
 
 import pandas as pd
-from pyproj import CRS
+from pyproj import CRS, proj_version_str
+from shapely import geos_version_string
 
 from src.benchmark.fault_injection import inject_faults, select_faults
 from src.benchmark.isolation import NETWORK_COLUMNS, OBSERVATION_COLUMNS, isolate_inputs
@@ -293,6 +294,10 @@ def build_benchmark(
             ).hexdigest(),
             "environment": {
                 "python": platform.python_version(),
+                "system": platform.system(),
+                "machine": platform.machine(),
+                "proj": proj_version_str,
+                "geos": geos_version_string,
                 **{
                     name: package_version(name)
                     for name in (
@@ -302,6 +307,7 @@ def build_benchmark(
                         "networkx",
                         "pyproj",
                         "shapely",
+                        "numpy",
                     )
                 },
             },

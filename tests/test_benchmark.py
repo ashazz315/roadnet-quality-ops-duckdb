@@ -3,6 +3,7 @@
 import json
 import random
 from copy import deepcopy
+from datetime import timedelta
 from itertools import pairwise
 from pathlib import Path
 
@@ -85,6 +86,9 @@ def test_published_summary_matches_current_generator(benchmark):
     assert pinned["network_version"] == first["run"]["network_version"]
     assert pinned["code_sha256"] == first["run"]["code_sha256"]
     assert pinned["summary"] == first["summary"]
+    assert {"system", "machine", "proj", "geos", "numpy"} <= first["run"][
+        "environment"
+    ].keys()
     if pinned["tested_environment"] == first["run"]["environment"]:
         assert pinned["artifacts"] == first["artifacts"]
 
@@ -188,9 +192,7 @@ def test_points_follow_roads_noise_and_time_contract(benchmark):
     assert points["is_synthetic"].all()
     timestamps = pd.to_datetime(points["timestamp"], utc=True, format="ISO8601")
     assert timestamps.min() >= pd.Timestamp(CONFIG["start_time"])
-    assert timestamps.max() <= pd.Timestamp(CONFIG["start_time"]) + pd.Timedelta(
-        hours=48
-    )
+    assert timestamps.max() <= pd.Timestamp(CONFIG["start_time"]) + timedelta(hours=48)
     assert (
         timestamps.groupby(points["trajectory_id"])
         .diff()
