@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "ui-990fb32576dbfe5aeb8e",
+  "sha256": "1575e6b256de9747fcab6734b822ab09df2456025192cdc16f10cef90617d667",
+  "analysis_run_id": "df9f7b6d-cfcf-4d86-959d-da8869817b70",
+  "replay_run_id": "6bc375e4-c1ad-45d7-ba1e-c70abd578562",
+  "input_content_sha256": {
+    "road_segment": "a6b6c5c78ac4df184c7a82a384219acd4fd3db426b5a62ac0efb7c3749aec70e",
+    "road_node": "423da3cf4e0bc3a13a00bc34bfe9ae763fbcad9719af46668b9865613b55292d",
+    "turn_restriction": "1985645b81ef3b851593618a42c6cac40796e44f034f6080d4a546e7d82d1633",
+    "trajectory_point": "6b290c398811d910aa212a84caacca52b25c92810d5de66effad9d28e246e70e",
+    "user_feedback": "fc2296b99a837b9c121c1e63414d3cd5f5ee19a87c58b922b9b4894b4ba90388"
+  },
+  "description": "Read-only presentation snapshot, generated from verified observable inputs and completed STEP 6/7 results."
+}

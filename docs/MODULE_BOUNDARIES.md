@@ -146,3 +146,10 @@ STEP 7 已实现：`network/routing.py` 执行受单行与静态转向限制的�
 包外 `replay_pipeline.py` 校验输入与分析结果指纹、组合计算并导出，`replay_visualization.py` 生成离线 SVG；DuckDB 写入归 `data_sources/replay_results.py`。受转向限制的查询必须经过新路由器，原 graph_builder 普通图的最短路仍不执行禁转。
 
 修复只用于派生网络快照；所有输出显式标记未实地核验，原 Issue 状态和评分保持不变。缺路候选缺乏明确端点、方向和通行权时保留人工审核。运行方式、默认样例、边界与结果字段见 [Route Replay](ROUTE_REPLAY.md)。下一步 STEP 8 页面改造仍需单独批准。
+
+
+## 11. STEP 8 增量边界
+
+`roadinsight_app.py` 为 V2 Streamlit 入口，旧 `app.py` 和六个旧模块保持原样。`roadinsight_ui/snapshot.py` 将已校验的可观测输入、分析和回放转成只读展示快照；不读取 Golden、注入答案或重跑检测。浏览器组件只做地图展示、筛选和跨页选择，`model.js` 集中定义展示口径。
+
+`roadinsight_ui/actions.py` 将人工核验追加到独立运行记录；上传仍调用原 ingest / validation / road_matching / storage / daily_report。核验与上传都不改变 V2 路网、候选或假设修复。组件不新增认证、部署或生产运营服务。运行与验收见 [UI Guide](UI_GUIDE.md)。STEP 9 评估尚未执行，必须继续获得用户明确批准。

@@ -1,0 +1,13 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const zlib=require('node:zlib');
+const path=require('node:path');
+const RI=require('../roadinsight_ui/frontend/model.js');
+const data=JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(__dirname,'../data/demo/roadinsight-v2.json.gz'))));
+test('default filters include all issues with actual observation dates',()=>{const f=RI.defaults(data);assert.equal(RI.filtered(data,f).length,data.summary.issue_count);assert.equal(f.start,'2026-06-01');assert.equal(f.end,'2026-06-03');});
+test('type, severity, confidence and date ranges change the same issue collection',()=>{let f=RI.defaults(data);f.types=['TURN_RESTRICTION_CONFLICT'];assert.equal(RI.filtered(data,f).length,3);f.min=70;assert.equal(RI.filtered(data,f).length,0);f=RI.defaults(data);f.severity='LOW';assert.equal(RI.filtered(data,f).length,0);f=RI.defaults(data);f.start='2027-01-01';assert.equal(RI.filtered(data,f).length,0);});
+test('empty selection remains empty instead of showing unrelated evidence',()=>{assert.equal(RI.select([],data.issues[0].issue_id),null);assert.equal(RI.distribution([]).reduce((n,r)=>n+r.count,0),0);});
+test('distribution and business chart use counts with declared denominators',()=>{assert.equal(RI.distribution(data.issues).reduce((n,r)=>n+r.count,0),18);for(const row of RI.business(data.issues))assert.equal(row.counts.reduce((a,b)=>a+b,0),18);});
+test('unavailable route values are not coerced to zero or a saving',()=>{assert.equal(RI.routeMetric(null,'m'),'不可计算');assert.match(RI.difference({distance_delta_m:null}),/不适用/);const longer=data.routes.find(x=>x.distance_delta_m>0);assert.match(RI.difference(longer),/^\+/);assert.equal(RI.replayStats(data.routes).lost,1);assert.equal(RI.replayStats(data.routes).restored,4);});
+test('untrusted labels and notes are escaped for HTML output',()=>{assert.equal(RI.escape('<img src=x onerror="x">'), '&lt;img src=x onerror=&quot;x&quot;&gt;');assert.equal(RI.escape(null),'');});

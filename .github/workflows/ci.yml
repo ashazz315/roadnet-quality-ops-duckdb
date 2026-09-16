@@ -16,4 +16,8 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: python -m pytest -q
-      - run: python -m compileall app.py src quality_mvp tests
+      - run: python -m compileall app.py roadinsight_app.py roadinsight_ui src quality_mvp tests
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node --test tests/ui_model.test.cjs
