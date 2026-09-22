@@ -36,3 +36,7 @@ road_quality.db
 Thumbs.db
 .vscode/
 .idea/
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml

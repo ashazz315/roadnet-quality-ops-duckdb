@@ -30,7 +30,11 @@ class DuckDBDataSource:
                         raise DataSourceError(f"Database entity is not implemented: {entity}")
                     metadata = SourceMetadata(**json.loads(raw_metadata))
                     # Names come only from the fixed enum and key mapping, never user SQL.
-                    frame = connection.execute(f'SELECT * FROM "{entity.value}" WHERE network_version = ? ORDER BY "{KEYS[entity]}"', [metadata.network_version]).df()
+                    result = connection.execute(f'SELECT * FROM "{entity.value}" WHERE network_version = ? ORDER BY "{KEYS[entity]}"', [metadata.network_version])
+                    # Own plain Python values before constructing the frame. This
+                    # avoids native nullable-array buffers from DuckDB's pandas
+                    # conversion, which crashed on the Windows validation runtime.
+                    frame = pd.DataFrame(result.fetchall(), columns=[column[0] for column in result.description])
                     if len(frame) != count or content_hash(frame) != expected_content:
                         raise DataSourceError(f"Database entity mismatch: {entity}")
                     self._frames[entity] = spatial_frame(frame, entity)

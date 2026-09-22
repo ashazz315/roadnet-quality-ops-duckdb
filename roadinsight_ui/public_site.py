@@ -11,7 +11,7 @@ from src.evaluation.report import bind_report, read_report
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = (
     "styles.css", "model.js", "icons.js", "maps.js", "validation.js", "app.js",
-    "public.js", "assets/shanghai-skyline.png", "vendor/leaflet.css",
+    "public.js", "backend.js", "assets/shanghai-skyline.png", "vendor/leaflet.css",
     "vendor/leaflet.js", "vendor/LEAFLET-LICENSE", "vendor/manifest.json",
 )
 

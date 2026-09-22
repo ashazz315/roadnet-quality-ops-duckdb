@@ -39,6 +39,19 @@ jobs:
           trap 'kill "$server_pid"' EXIT
           for attempt in {1..20}; do curl --fail --silent http://127.0.0.1:8510/ > /dev/null && break; sleep 1; done
           node scripts/10_verify_public.cjs
+      - name: Build and verify full-service container
+        env:
+          NODE_PATH: ${{ runner.temp }}/roadinsight-qa/node_modules
+          ROADINSIGHT_QA_EDITOR_TOKEN: integration-only-access-code-for-ci-2026
+        run: |
+          docker build -t roadinsight-qa .
+          docker run -d --name roadinsight-qa --memory=2g --cpus=2 -p 127.0.0.1:8511:8501 --mount type=volume,source=roadinsight-qa-data,target=/var/data/roadinsight -e ROADINSIGHT_EDITOR_TOKEN="$ROADINSIGHT_QA_EDITOR_TOKEN" roadinsight-qa
+          trap 'docker logs roadinsight-qa; docker rm -f roadinsight-qa' EXIT
+          for attempt in {1..40}; do curl --fail --silent http://127.0.0.1:8511/_stcore/health > /dev/null && break; sleep 1; done
+          node scripts/11_verify_server.cjs
+          docker restart roadinsight-qa
+          for attempt in {1..40}; do curl --fail --silent http://127.0.0.1:8511/_stcore/health > /dev/null && break; sleep 1; done
+          docker exec roadinsight-qa python -c "import sqlite3; db=sqlite3.connect('/var/data/roadinsight/workspace.sqlite'); assert db.execute(\"select count(*) from jobs where status='completed'\").fetchone()[0] == 1"
       - uses: actions/upload-pages-artifact@v4
         if: github.event_name == 'push' && github.ref == 'refs/heads/roadinsight-v2'
         with:
@@ -53,6 +66,7 @@ jobs:
             data/runtime/ci_validation/*.log
             data/runtime/ci_validation/run*/evaluation.json
             data/runtime/public_ui/public-browser-report.json
+            data/runtime/server_ui/server-browser-report.json
 
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/roadinsight-v2'

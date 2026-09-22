@@ -40,7 +40,7 @@ def records(frame):
     )
 
 
-def build_snapshot(inputs_path, analysis_path, replay_path, output):
+def build_snapshot(inputs_path, analysis_path, replay_path, output, *, dataset_label="Shanghai-Xuhui-v1"):
     """Read only observable inputs and completed analysis/replay outputs, not truth."""
     output = Path(output)
     if output.exists() or output.with_suffix(".manifest.json").exists():
@@ -83,7 +83,7 @@ def build_snapshot(inputs_path, analysis_path, replay_path, output):
         raise ValueError("Replay contains mismatched issue references")
     payload = {
         "schema_version": 1,
-        "dataset_label": "Shanghai-Xuhui-v1",
+        "dataset_label": dataset_label,
         "network_version": sources["road_segment"]["network_version"],
         "sources": sources,
         "analysis_run": analysis["run"],

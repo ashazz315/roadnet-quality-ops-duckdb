@@ -52,7 +52,7 @@ Windows 可使用 `run_roadinsight.bat`。原应用仍用 `python -m streamlit r
 | `ROADINSIGHT_REVIEW_DIR` | `data/runtime/ui_reviews` | 按分析 run ID 隔离的追加式人工记录 |
 | `ROADINSIGHT_UPLOAD_DB` | `data/road_quality.duckdb` | 旧版上传批次数据库 |
 
-上传最大 5 MB；必填字段为 `record_id,report_time,longitude,latitude,issue_type,source,description,region`。先预览校验结果，再明确保存；同一会话同一次上传不会重复入库。上传点文件不自动刷新 V2 四类路网诊断。人工核验是本地单用户演示记录，不包含登录、权限、电子签名或多人审核系统。
+上传最大 5 MB；必填字段为 `record_id,report_time,longitude,latitude,issue_type,source,description,region`。先预览校验结果，再明确保存；同一会话同一次上传不会重复入库。旧版上传点文件不自动刷新 V2 四类路网诊断；新增 V2 数据包入口会实际运行检测与回放。完整在线模式使用编辑访问码限制私有工作区访问，没有注册账号、电子签名或多级审核系统。详见 [完整服务说明](FULL_SERVICE.md)。
 
 ## 重建页面快照
 
@@ -77,7 +77,7 @@ node --test tests/ui_model.test.cjs
 node scripts/08_verify_ui.cjs
 ```
 
-默认 QA 地址为 `http://127.0.0.1:8502`，可用 `ROADINSIGHT_QA_URL` 修改；输出默认在忽略目录 `data/runtime/ui_qa`，可用 `ROADINSIGHT_QA_OUTPUT` 修改。脚本会保存测试核验与上传记录，检查筛选、地图点击、图层、详情身份、回放、不可达、深链接、刷新、核验、上传／保存／导出、断网底图降级，并输出两种尺寸截图与报告。CI 运行 Python 回归和 Node 纯展示计算测试；浏览器验收需本地单独运行。
+默认 QA 地址为 `http://127.0.0.1:8502`，可用 `ROADINSIGHT_QA_URL` 修改；输出默认在忽略目录 `data/runtime/ui_qa`，可用 `ROADINSIGHT_QA_OUTPUT` 修改。脚本会保存测试核验与上传记录，检查筛选、地图点击、图层、详情身份、回放、不可达、深链接、刷新、核验、上传／保存／导出、断网底图降级，并输出两种尺寸截图与报告。CI 运行 Python 回归、Node 展示计算、公开页面浏览器验收，并构建 Docker 完整服务执行隔离写入验收。
 
 ## 实现与资产
 

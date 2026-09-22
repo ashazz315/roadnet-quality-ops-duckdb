@@ -102,13 +102,15 @@ def test_inconsistent_or_unearned_claims_are_rejected(kind):
         validate_snapshot(data)
 
 
-def test_streamlit_entry_loads_without_errors():
+def test_streamlit_entry_loads_without_errors(monkeypatch, tmp_path):
+    monkeypatch.setenv("ROADINSIGHT_DATA_DIR", str(tmp_path / "workspace"))
     app = AppTest.from_file(str(ROOT / "roadinsight_app.py")).run(timeout=30)
     assert not app.exception
     assert not app.error
 
 
 def test_streamlit_reports_invalid_snapshot_without_fake_demo(monkeypatch, tmp_path):
+    monkeypatch.setenv("ROADINSIGHT_DATA_DIR", str(tmp_path / "workspace"))
     monkeypatch.setenv("ROADINSIGHT_UI_SNAPSHOT", str(tmp_path / "missing.json.gz"))
     app = AppTest.from_file(str(ROOT / "roadinsight_app.py")).run(timeout=30)
     assert not app.exception

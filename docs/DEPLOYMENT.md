@@ -1,5 +1,7 @@
 # RoadInsight V2 部署与发布
 
+后续已实现完整服务的上传分析、编辑访问控制、持久化与备份部署包，参见 [完整服务说明](FULL_SERVICE.md)。当前公网仍为以下只读 Pages 演示；完整后端未在缺少托管环境时自动上线。
+
 ## 已实现的两种运行方式
 
 | 方式 | 用途 | 可用功能 |
@@ -47,7 +49,7 @@ python -m streamlit run roadinsight_app.py --server.address 127.0.0.1
 | `ROADINSIGHT_REVIEW_DIR` | `data/runtime/ui_reviews`，追加式人工记录 |
 | `ROADINSIGHT_UPLOAD_DB` | `data/road_quality.duckdb`，本地上传批次 |
 
-目前没有把具备写入功能的 Streamlit 服务公开托管。如将来部署完整服务，需要单独选择托管环境、持久化目录和访问控制；临时文件系统不能作为上传与核验的长期存储。Community Cloud 可选择本仓库、V2 分支和 `roadinsight_app.py` 入口，详见 [Streamlit 部署文档](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy)。
+免费 Community Cloud 部署使用本仓库、`roadinsight-v2` 分支和专用 `streamlit_cloud.py` 入口，配置与上线验收见 [免费部署说明](STREAMLIT_CLOUD.md)。该入口始终启用在线权限检查；上传与核验使用临时存储，页面明确提示并提供结果导出。当前尚未获得实际应用网址，不能将其描述为已上线或长期持久化服务。
 
 ## 发布后检查与回退
 
