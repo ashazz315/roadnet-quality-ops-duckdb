@@ -5,6 +5,9 @@ on:
     branches: [main, roadinsight-v2]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -22,6 +25,24 @@ jobs:
           node-version: "22"
       - run: node --test tests/ui_model.test.cjs
       - run: python scripts/09_validate.py --output data/runtime/ci_validation
+      - run: python scripts/10_build_public_demo.py --output data/runtime/public_demo
+      - name: Install browser acceptance tools
+        run: |
+          npm install --prefix "$RUNNER_TEMP/roadinsight-qa" playwright@1.58.2
+          "$RUNNER_TEMP/roadinsight-qa/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Verify public demo
+        env:
+          NODE_PATH: ${{ runner.temp }}/roadinsight-qa/node_modules
+        run: |
+          python -m http.server 8510 --bind 127.0.0.1 --directory data/runtime/public_demo > "$RUNNER_TEMP/public-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..20}; do curl --fail --silent http://127.0.0.1:8510/ > /dev/null && break; sleep 1; done
+          node scripts/10_verify_public.cjs
+      - uses: actions/upload-pages-artifact@v4
+        if: github.event_name == 'push' && github.ref == 'refs/heads/roadinsight-v2'
+        with:
+          path: data/runtime/public_demo
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -31,3 +52,23 @@ jobs:
             data/runtime/ci_validation/failure.json
             data/runtime/ci_validation/*.log
             data/runtime/ci_validation/run*/evaluation.json
+            data/runtime/public_ui/public-browser-report.json
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/roadinsight-v2'
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: roadinsight-pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy verified public demo
+        id: deployment
+        uses: actions/deploy-pages@v4
