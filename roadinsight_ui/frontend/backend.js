@@ -4,7 +4,7 @@ function backendNotice(){
  return `<div class="alert-note" role="status">免费在线体验：上传文件、分析任务和核验记录仅临时保存，服务重启后可能丢失。请及时导出结果并保留原始数据。${backendAccess.can_edit?'<button data-action="download-snapshot">导出当前结果</button> <button data-action="download-reviews">导出核验记录</button>':''}</div>`;
 }
 function backendHeader(){
- if(window.RIPublic)return '';
+ if(window.RIPublic)return '<a class="tiny-button" href="https://roadinsight-v2-ashazz315.streamlit.app/" target="_blank" rel="noopener noreferrer">在线工作台 ↗</a>';
  if(backendAccess.mode!=='server')return '<span>本地完整工作区</span>';
  if(backendAccess.login_enabled===false)return '<span>免费体验 · 公开浏览</span>';
  return `<button class="tiny-button" data-action="${backendAccess.can_edit?'editor-logout':'editor-login'}">${icon('shield')}${backendAccess.can_edit?'退出编辑':'编辑登录'}</button>`;

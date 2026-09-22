@@ -4,11 +4,11 @@
 
 ## 演示前一分钟
 
-- 打开[公开演示](https://ashazz315.github.io/roadnet-quality-ops-duckdb/)，或执行 `python -m streamlit run roadinsight_app.py`。
+- 打开 [Streamlit 工作台](https://roadinsight-v2-ashazz315.streamlit.app/)；[Pages 只读演示](https://ashazz315.github.io/roadnet-quality-ops-duckdb/)作为备用，也可执行 `python -m streamlit run roadinsight_app.py`。
 - 浏览器使用 1680×945 或 1440×900；确认 Dashboard 显示 18 个候选、28 组回放。
 - 底图慢时在 Map Diagnosis 切换“离线路网”；道路、轨迹与回放几何仍可查看。
 - 准备[关键案例](https://ashazz315.github.io/roadnet-quality-ops-duckdb/?page=detail&issue=issue-05df7e154203f10da880)和[验证中心](https://ashazz315.github.io/roadnet-quality-ops-duckdb/?page=validation)。
-- 公开版只浏览结果；上传、入库和人工核验使用本地版。演示核验时选择“仍需核验”，注明是演示记录。
+- Pages 只浏览结果；上传、入库和人工核验使用已配置编辑访问码的 Streamlit 工作台或本地版。免费工作台结果仅临时保存。演示核验时选择“仍需核验”，注明是演示记录。
 
 ## 0:00–0:30｜项目介绍
 

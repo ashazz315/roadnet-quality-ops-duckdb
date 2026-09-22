@@ -26,7 +26,8 @@ const path=require('node:path');
   }
  }
  assert.equal(await page.locator('input[type="file"]').count(),0);
- assert.match(await page.locator('.content').innerText(),/本地完整版/);
+ assert.match(await page.locator('.content').innerText(),/Streamlit 工作台/);
+ assert.equal(await page.locator('.top-meta a').getAttribute('href'),'https://roadinsight-v2-ashazz315.streamlit.app/');
  await page.locator('[data-action="download-snapshot"]').click();
  await page.locator('.nav-item[data-page="map"]').click();
  for(const input of await page.locator('input[data-type]').all())await input.uncheck();

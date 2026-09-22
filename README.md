@@ -6,9 +6,9 @@
 
 面向路网数据运营 / 地理位置中台岗位的个人作品集：从 OSM 路网、合成轨迹与反馈识别问题，解释证据与潜在业务影响，在独立副本上验证修复假设，再用已知故障评估检测能力。
 
-[打开在线演示](https://ashazz315.github.io/roadnet-quality-ops-duckdb/) · [6–8 分钟面试演示](docs/INTERVIEW_DEMO.md) · [验证结果与口径](docs/BENCHMARK_EVALUATION.md) · [部署说明](docs/DEPLOYMENT.md)
+[打开 Streamlit 工作台](https://roadinsight-v2-ashazz315.streamlit.app/) · [Pages 备用演示](https://ashazz315.github.io/roadnet-quality-ops-duckdb/) · [6–8 分钟面试演示](docs/INTERVIEW_DEMO.md) · [验证结果与口径](docs/BENCHMARK_EVALUATION.md) · [部署说明](docs/DEPLOYMENT.md)
 
-> V2 开发与发布位于 `roadinsight-v2` 分支，`main` 保留原版。在线演示为只读：地图筛选、证据、路线对比和评估可交互；文件上传与人工核验保存使用本地 Streamlit 完整版。项目不代表任何企业内部系统或线上效果。
+> V2 开发与发布位于 `roadinsight-v2` 分支，`main` 保留原版。Streamlit 向访客开放浏览；配置编辑访问码后可上传分析与保存核验。免费平台的上传结果仅临时保存，请及时导出。Pages 提供只读备用演示。项目不代表任何企业内部系统或线上效果。
 
 ![RoadInsight Dashboard](docs/images/dashboard.png)
 
@@ -29,7 +29,7 @@
 - **Map Diagnosis**：图层与筛选、地图 / 列表 / 证据联动。
 - **Issue Detail**：问题摘要、证据时间线、根因假设、修复前后路线对比。
 - **Validation**：数据质量、独立 Benchmark、漏检明细、重复性与耗时。
-- **Data Management**：来源与数据导出；本地版增加 CSV/XLSX 校验、DuckDB 批次保存、Excel 日报与人工核验记录。
+- **Data Management**：来源与数据导出；编辑工作区支持 V2 上传分析、历史任务、CSV/XLSX 校验、DuckDB 批次保存、Excel 日报与人工核验记录。
 
 <details>
 <summary>查看地图诊断、问题回放与验证中心截图</summary>
@@ -62,7 +62,7 @@
 
 已增加受编辑访问码保护的工作区：V2 ZIP 数据包上传 → 实际检测与假设回放 → 独立任务保存 → 历史结果切换 → 人工核验；支持持久化目录、重启恢复及手动备份。旧版 CSV/XLSX 入库和 Excel 日报保留。
 
-**当前已验证的公网地址仍是只读 Pages 演示。** 已准备 [Streamlit Community Cloud 免费部署入口](docs/STREAMLIT_CLOUD.md)，支持访客浏览及受访问码保护的上传分析；免费平台上的结果仅临时保存，实际应用网址须发布验收后补充。需要长期保存时，部署包、输入协议和备份方式见 [完整服务说明](docs/FULL_SERVICE.md)。
+**在线地址：[RoadInsight Streamlit 工作台](https://roadinsight-v2-ashazz315.streamlit.app/)。** [免费部署与编辑访问码配置](docs/STREAMLIT_CLOUD.md)说明访客浏览、编辑解锁及临时存储边界。免费平台可能休眠，上传结果不能作为长期备份；需要持久卷和备份时参见 [完整服务说明](docs/FULL_SERVICE.md)。
 
 ## 本地运行
 
