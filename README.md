@@ -1,3 +1,11 @@
+## RoadInsight V2 腾讯云在线入口
+
+[打开公开演示](https://roadinsight-sy-d2g7eacoh8e6c1fae.webapps.tcloudbase.com/) · [打开在线工作台](https://roadinsight-workbench-331907-5-1511207010.sh.run.tcloudbase.com/) · [V2 源码与使用说明](https://github.com/ashazz315/roadnet-quality-ops-duckdb/tree/roadinsight-v2) · [腾讯云部署配置](https://github.com/ashazz315/roadnet-quality-ops-duckdb/blob/roadinsight-v2/docs/CLOUDBASE.md)
+
+V2 提供地图诊断、证据分析、假设路线回放与独立验证；在线编辑需要访问码，上传结果为临时存储。下方保留 main 分支原版 MVP 的说明。
+
+---
+
 # 路网数据质量最小工作台
 
 根目录 `app.py` 是唯一 Streamlit 入口。当前闭环支持：
