@@ -1,12 +1,14 @@
 # RoadInsight V2 部署与发布
 
-在线工作台：[RoadInsight Streamlit](https://roadinsight-v2-ashazz315.streamlit.app/)。免费托管上的上传结果仅临时保存，编辑功能需要访问码；长期持久化与备份部署包见 [完整服务说明](FULL_SERVICE.md)。
+在线工作台：[RoadInsight Streamlit](https://roadinsight-workbench-331907-5-1511207010.sh.run.tcloudbase.com/)。免费托管上的上传结果仅临时保存，编辑功能需要访问码；长期持久化与备份部署包见 [完整服务说明](FULL_SERVICE.md)。
+
+当前首选公开入口：[腾讯云 RoadInsight V2](https://roadinsight-sy-d2g7eacoh8e6c1fae.webapps.tcloudbase.com/)。容器配置与更新步骤见 [腾讯云部署说明](CLOUDBASE.md)。GitHub Pages 和 Streamlit Community Cloud 保留为备选部署方式。
 
 ## 运行方式
 
 | 方式 | 用途 | 可用功能 |
 | --- | --- | --- |
-| [Streamlit 免费工作台](https://roadinsight-v2-ashazz315.streamlit.app/) | 在线浏览、受保护的编辑体验 | 五页浏览；配置访问码后可上传分析与核验，结果仅临时保存 |
+| [腾讯云 Streamlit 工作台](https://roadinsight-workbench-331907-5-1511207010.sh.run.tcloudbase.com/) | 在线浏览、受保护的编辑体验 | 五页浏览；配置访问码后可上传分析与核验，结果仅临时保存 |
 | [GitHub Pages 公开演示](https://ashazz315.github.io/roadnet-quality-ops-duckdb/) | 面试分享，无需登录 | 五页浏览、地图筛选、证据、假设回放、验证明细、快照下载 |
 | 本地 Streamlit 完整版 | 上传处理与人工核验 | 上述全部功能，以及 CSV/XLSX 校验、DuckDB 保存、Excel 日报、人工记录 |
 

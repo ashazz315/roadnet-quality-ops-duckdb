@@ -6,7 +6,7 @@
 
 面向路网数据运营 / 地理位置中台岗位的个人作品集：从 OSM 路网、合成轨迹与反馈识别问题，解释证据与潜在业务影响，在独立副本上验证修复假设，再用已知故障评估检测能力。
 
-[打开 Streamlit 工作台](https://roadinsight-v2-ashazz315.streamlit.app/) · [Pages 备用演示](https://ashazz315.github.io/roadnet-quality-ops-duckdb/) · [6–8 分钟面试演示](docs/INTERVIEW_DEMO.md) · [验证结果与口径](docs/BENCHMARK_EVALUATION.md) · [部署说明](docs/DEPLOYMENT.md)
+[腾讯云公开演示](https://roadinsight-sy-d2g7eacoh8e6c1fae.webapps.tcloudbase.com/) · [打开在线工作台](https://roadinsight-workbench-331907-5-1511207010.sh.run.tcloudbase.com/) · [GitHub Pages 备用演示](https://ashazz315.github.io/roadnet-quality-ops-duckdb/) · [6–8 分钟面试演示](docs/INTERVIEW_DEMO.md) · [验证结果与口径](docs/BENCHMARK_EVALUATION.md) · [部署说明](docs/DEPLOYMENT.md)
 
 > V2 开发与发布位于 `roadinsight-v2` 分支，`main` 保留原版。Streamlit 向访客开放浏览；配置编辑访问码后可上传分析与保存核验。免费平台的上传结果仅临时保存，请及时导出。Pages 提供只读备用演示。项目不代表任何企业内部系统或线上效果。
 
@@ -54,7 +54,7 @@
 | 假设路线重放 | 28 组 | 10 变短、8 变长、5 不变、4 恢复可达、1 失去可达 |
 | 完整重复运行 | 2 次一致 | 输入、分析、回放、匹配与规则指纹核对 |
 
-[示例转向候选](https://ashazz315.github.io/roadnet-quality-ops-duckdb/?page=detail&issue=issue-05df7e154203f10da880)：新增禁转假设后，路线从 **402.2 m / 41.2 s** 变为 **1105.4 m / 112.1 s**。原路线不再满足修复后的约束，路线更长仍可能是正确修复的结果；该假设尚未实地核验，ETA 是模型值。
+[示例转向候选](https://roadinsight-sy-d2g7eacoh8e6c1fae.webapps.tcloudbase.com/?page=detail&issue=issue-05df7e154203f10da880)：新增禁转假设后，路线从 **402.2 m / 41.2 s** 变为 **1105.4 m / 112.1 s**。原路线不再满足修复后的约束，路线更长仍可能是正确修复的结果；该假设尚未实地核验，ETA 是模型值。
 
 已知不足：转向类召回率 50%；评分未校准；缺路候选仍需人工补充几何与通行条件；未验证现实泛化、大规模并发和线上收益。详见[评估报告](data/validation/default_report.json)。
 
@@ -62,7 +62,7 @@
 
 已增加受编辑访问码保护的工作区：V2 ZIP 数据包上传 → 实际检测与假设回放 → 独立任务保存 → 历史结果切换 → 人工核验；支持持久化目录、重启恢复及手动备份。旧版 CSV/XLSX 入库和 Excel 日报保留。
 
-**在线地址：[RoadInsight Streamlit 工作台](https://roadinsight-v2-ashazz315.streamlit.app/)。** [免费部署与编辑访问码配置](docs/STREAMLIT_CLOUD.md)说明访客浏览、编辑解锁及临时存储边界。免费平台可能休眠，上传结果不能作为长期备份；需要持久卷和备份时参见 [完整服务说明](docs/FULL_SERVICE.md)。
+**腾讯云入口：[公开演示](https://roadinsight-sy-d2g7eacoh8e6c1fae.webapps.tcloudbase.com/) · [Streamlit 工作台](https://roadinsight-workbench-331907-5-1511207010.sh.run.tcloudbase.com/)。** [腾讯云部署与编辑访问码配置](docs/CLOUDBASE.md)说明访客浏览、编辑解锁及临时存储边界。免费平台可能休眠，上传结果不能作为长期备份；需要持久卷和备份时参见 [完整服务说明](docs/FULL_SERVICE.md)。
 
 ## 本地运行
 

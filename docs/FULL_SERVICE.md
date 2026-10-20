@@ -4,7 +4,7 @@
 
 完整服务功能已接入现有 Streamlit 五页工作台。GitHub Pages 继续提供公开只读演示；Python 服务需要额外托管环境，不能把 Pages 链接当作完整后端地址。
 
-免费在线入口：[RoadInsight Streamlit 工作台](https://roadinsight-v2-ashazz315.streamlit.app/)。配置访问码后可使用编辑功能，上传任务和核验记录仅临时保存；它没有持久卷保证。本文的长期保存和备份方案适用于另行配置的持久化环境。[免费部署配置](STREAMLIT_CLOUD.md)
+腾讯云在线入口：[RoadInsight Streamlit 工作台](https://roadinsight-workbench-331907-5-1511207010.sh.run.tcloudbase.com/)。配置访问码后可使用编辑功能，上传任务和核验记录仅临时保存；它没有持久卷保证。本文的长期保存和备份方案适用于另行配置的持久化环境。[腾讯云部署配置](CLOUDBASE.md)；[Community Cloud 备选配置](STREAMLIT_CLOUD.md)
 
 公开访客可浏览固定演示；编辑访问码解锁可信编辑者共用的工作区。上传数据、历史任务和核验记录不会自动发布到 Pages，也不会发送给未解锁的访客。当前不是注册用户平台，没有个人账号、自助找回密码或不同编辑者之间的私有空间。
 

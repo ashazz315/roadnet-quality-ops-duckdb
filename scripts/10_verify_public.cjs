@@ -27,7 +27,7 @@ const path=require('node:path');
  }
  assert.equal(await page.locator('input[type="file"]').count(),0);
  assert.match(await page.locator('.content').innerText(),/Streamlit 工作台/);
- assert.equal(await page.locator('.top-meta a').getAttribute('href'),'https://roadinsight-v2-ashazz315.streamlit.app/');
+ assert.equal(await page.locator('.top-meta a').getAttribute('href'),'https://roadinsight-workbench-331907-5-1511207010.sh.run.tcloudbase.com/');
  await page.locator('[data-action="download-snapshot"]').click();
  await page.locator('.nav-item[data-page="map"]').click();
  for(const input of await page.locator('input[data-type]').all())await input.uncheck();
