@@ -35,7 +35,7 @@ def build_public_site(output, snapshot=DEFAULT_SNAPSHOT,
         shutil.copyfile(frontend / name, target)
     html = (frontend / "index.html").read_text(encoding="utf-8")
     html = html.replace('<script src="app.js">', '<script src="public.js"></script><script src="app.js">')
-    html = html.replace('<title>RoadInsight</title>', '<title>RoadInsight V2 · 路网诊断演示</title><meta name="description" content="路网质量诊断、证据分析、假设路线重放与独立基准验证。公开只读作品集，基于 OSM 和合成观测。">')
+    html = html.replace('<title>RoadInsight</title>', '<title>RoadInsight · 路网质量诊断</title><meta name="description" content="路网质量诊断、证据分析、假设路线重放与独立基准验证。公开只读案例，基于 OSM 和合成观测。">')
     (output / "index.html").write_bytes(html.encode())
     (output / ".nojekyll").write_bytes(b"")
     files = {}
